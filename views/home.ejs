@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900  text-white flex flex-col items-center justify-center min-h-screen px-4">
+    <header class="bg-gray-900 text-white p-4 shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Navigation Links -->
+            <ul class="flex space-x-6">
+                <li>
+                    <a href="/" class="hover:text-gray-400  transition duration-300 border-b-2 " >
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/aboutus" class="hover:text-gray-400 transition duration-300 border-b-2">
+                        About Us
+                    </a>
+                </li>
+            </ul>
+    
+            <!-- Logout Button -->
+            <!-- <div class="w-96 text-end">
+                <form action="/logout" method="GET">
+                    <button type="submit" 
+                        class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Logout
+                    </button>
+                </form>
+            </div> -->
+            <!-- Logout Button (Only visible when logged in) -->
+<div class="w-96 text-end">
+    <% if (typeof token_name !== "undefined" && token_name) { %>
+        <form action="/logout" method="GET">
+            <button type="submit" 
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                Logout
+            </button>
+        </form>
+    <% } else { %>
+        <a href="/login" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+            Login
+        </a>
+    <% } %>
+</div>
+
+        </nav>
+    </header>
+    
+    
+   
+    <!-- Main Converter Box -->
+    <div class="bg-gray-800 p-8 mt-10 rounded-lg shadow-lg text-center w-96">
+        <h1 class="text-2xl font-bold mb-4">YouTube to MP3 Converter</h1>
+        <form action="/convert-mp3" method="post" id="form" class="space-y-4">
+            <input type="text" name="videoURL" placeholder="https://www.youtube.com/watch?v=dYIbRoudm4U"
+                class="w-full p-2 text-black rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            
+            <button id="convert-btn" 
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                Convert
+            </button>
+        </form>
+    </div>
+
+    <!-- Success/Error Message -->
+    <div class="mt-6 w-96 text-center">
+        <% if (typeof success !== "undefined") { %>
+            <div class="<%= success ? 'bg-green-600' : 'bg-red-600' %> p-4 rounded-lg shadow-lg">
+                <% if (success) { %>
+                    <p class="font-semibold"><%= song_title %></p>
+                    <a href="<%= song_link %>">
+                        <button class="mt-2 bg-white text-green-600 font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
+                            DOWNLOAD
+                        </button>
+                    </a>
+                <% } else { %>
+                    <p class="font-semibold"><%= message %></p>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Why Use a YouTube to MP3 Converter? -->
+    <!-- <div class="mt-10 w-96 text-center bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold">Why Use a YouTube to MP3 Converter?</h2>
+        <p class="text-gray-400 mt-2">
+            Convert YouTube videos into MP3 files for offline listening. Perfect for music, podcasts, and lectures.
+        </p>
+        <h3 class="text-lg font-semibold mt-4">Key Features:</h3>
+        <ul class="list-disc list-inside text-gray-400 mt-2">
+            <li>Fast conversion speed</li>
+            <li>High-quality MP3 output</li>
+            <li>Works on all devices</li>
+            <li>Completely free & easy to use</li>
+        </ul>
+    </div> -->
+
+    <!-- Common Uses Section -->
+    <!-- <div class="mt-10 w-96 text-center bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold">How It Works</h2>
+        <p class="text-gray-400 mt-2">
+            Our tool extracts the audio track from YouTube videos in high-quality MP3 format.
+        </p>
+        <h3 class="text-lg font-semibold mt-4">Process:</h3>
+        <ul class="list-disc list-inside text-gray-400 mt-2">
+            <li>Enter the YouTube video ID in the input box.</li>
+            <li>Click the "Convert" button to start the process.</li>
+            <li>Download the converted MP3 file once it's ready.</li>
+        </ul>
+    </div> -->
+
+    <!-- Footer -->
+    <footer class="mt-10 mb-10 pt-4  border-t-2 text-gray-500 text-sm">
+        <p>© 2025 YouTube MP3 Converter | Built with ❤️ by Vasmyrrh Technologies</p>
+    </footer>
+
+</body>
+</html>
